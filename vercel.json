@@ -1,0 +1,27 @@
+{
+  "rewrites": [
+    { "source": "/", "destination": "/" },
+    { "source": "/profile", "destination": "/" },
+    { "source": "/transaction", "destination": "/" },
+    { "source": "/signup", "destination": "/" },
+    { "source": "/login", "destination": "/" },
+    { "source": "/admin", "destination": "/admin/index.html" },
+    { "source": "/admin/order", "destination": "/admin/index.html" },
+    { "source": "/admin/users", "destination": "/admin/index.html" },
+    { "source": "/admin/add-product", "destination": "/admin/index.html" },
+    { "source": "/admin/all-products", "destination": "/admin/index.html" },
+    { "source": "/admin/edit-product/:productId", "destination": "/admin/index.html" },
+    { "source": "/admin/auth/signin", "destination": "/admin/index.html" },
+    { "source": "/woman", "destination": "/index.html" },
+    { "source": "/man", "destination": "/index.html" },
+    { "source": "/kids", "destination": "/index.html" },
+    { "source": "/sports", "destination": "/index.html" },
+    { "source": "/cart", "destination": "/index.html" },
+    { "source": "/checkout", "destination": "/index.html" },
+    { "source": "/favorites", "destination": "/index.html" },
+    { "source": "/orders", "destination": "/index.html" },
+    { "source": "/order-confirmation", "destination": "/index.html" },
+    { "source": "/product/:id", "destination": "/index.html" },
+    { "source": "/sale", "destination": "/index.html" }
+  ]
+}
