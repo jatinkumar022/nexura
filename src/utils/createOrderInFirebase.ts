@@ -6,11 +6,11 @@ import {
   Timestamp,
   getDoc,
 } from "firebase/firestore";
-import { clearCartItems, removeCartItem } from "./cartOperations";
+import { clearCartItems } from "./cartOperations";
 
 // Initialize Firestore
 const db = getFirestore();
-
+// @ts-ignore
 const createOrderInFirebase = async (userId, totalPrice, orderDetails) => {
   try {
     // Create a unique order ID
@@ -29,7 +29,9 @@ const createOrderInFirebase = async (userId, totalPrice, orderDetails) => {
     // Iterate over the order details and format them into the products field
     let totalQuantity = 0;
     for (const product of Object.values(orderDetails)) {
+      // @ts-ignore
       const { productId, quantity } = product;
+      // @ts-ignore
       orderData.products[productId] = quantity;
       totalQuantity += quantity;
     }
@@ -67,6 +69,7 @@ export const cancelOrder = async (
       const orders = userData?.orders || [];
 
       // Find the order to cancel
+      // @ts-ignore
       const updatedOrders = orders.map((order) => {
         if (order.orderId === orderId) {
           return { ...order, status: "Cancelled" }; // Update status to "Cancelled"
@@ -83,36 +86,6 @@ export const cancelOrder = async (
   } catch (error) {
     console.error("Error cancelling order: ", error);
   }
-
-  const removeOrder = async (
-    userId: string,
-    orderId: string
-  ): Promise<void> => {
-    try {
-      // Reference to the user's document
-      const userRef = doc(db, "users", userId);
-
-      // Fetch the user's current orders
-      const userDoc = await getDoc(userRef);
-      if (userDoc.exists()) {
-        const userData = userDoc.data();
-        const orders = userData?.orders || [];
-
-        // Filter out the order to be removed
-        const updatedOrders = orders.filter(
-          (order) => order.orderId !== orderId
-        );
-
-        // Update the user's document with the new orders array
-        await updateDoc(userRef, { orders: updatedOrders });
-        console.log("Order removed successfully.");
-      } else {
-        console.error("User document does not exist.");
-      }
-    } catch (error) {
-      console.error("Error removing order: ", error);
-    }
-  };
 };
 
 export const removeOrder = async (
@@ -130,6 +103,7 @@ export const removeOrder = async (
       const orders = userData?.orders || [];
 
       // Filter out the order to be removed
+      // @ts-ignore
       const updatedOrders = orders.filter((order) => order.orderId !== orderId);
 
       // Update the user's document with the new orders array

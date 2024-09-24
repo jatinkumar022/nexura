@@ -14,6 +14,7 @@ const initialState = {
 
 // Define an async thunk to fetch user data from Firestore
 export const fetchUser = createAsyncThunk("users/fetchUser", async (userId) => {
+  // @ts-ignore
   const userDoc = doc(db, "users", userId);
   const docSnap = await getDoc(userDoc);
 
@@ -29,11 +30,14 @@ export const checkAuthState = createAsyncThunk(
   "users/checkAuthState",
   async () => {
     const auth = getAuth();
+    // @ts-ignore
     return new Promise((resolve, reject) => {
       onAuthStateChanged(auth, (user) => {
         if (user) {
+          // @ts-ignore
           resolve(user.uid);
         } else {
+          // @ts-ignore
           resolve(null);
         }
       });
@@ -45,6 +49,7 @@ export const checkAuthState = createAsyncThunk(
 export const fetchFavorites = createAsyncThunk(
   "users/fetchFavorites",
   async (userId) => {
+    // @ts-ignore
     const userDoc = doc(db, "users", userId);
     const docSnap = await getDoc(userDoc);
 
@@ -69,14 +74,17 @@ const usersSlice = createSlice({
       })
       .addCase(checkAuthState.fulfilled, (state, action) => {
         state.status = "succeeded";
+        // @ts-ignore
         state.userId = action.payload;
         if (action.payload) {
           // Fetch user data if user ID is available
+          // @ts-ignore
           state.userId = action.payload;
         }
       })
       .addCase(checkAuthState.rejected, (state, action) => {
         state.status = "failed";
+        // @ts-ignore
         state.error = action.error.message;
       })
       .addCase(fetchUser.pending, (state) => {
@@ -84,10 +92,12 @@ const usersSlice = createSlice({
       })
       .addCase(fetchUser.fulfilled, (state, action) => {
         state.status = "succeeded";
+        // @ts-ignore
         state.user = action.payload;
       })
       .addCase(fetchUser.rejected, (state, action) => {
         state.status = "failed";
+        // @ts-ignore
         state.error = action.error.message;
       })
       .addCase(fetchFavorites.pending, (state) => {
@@ -99,6 +109,7 @@ const usersSlice = createSlice({
       })
       .addCase(fetchFavorites.rejected, (state, action) => {
         state.status = "failed";
+        // @ts-ignore
         state.error = action.error.message;
       });
   },

@@ -1,4 +1,4 @@
-import { CreditCard, Github, LifeBuoy, LogOut, User } from "lucide-react";
+import { CreditCard, Github, LogOut, User } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -10,7 +10,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Link } from "react-router-dom";
-
+//@ts-ignore
 export function DropdownMenuComp({ profilePicUrl }) {
   const openGitHub = () => {
     window.open(

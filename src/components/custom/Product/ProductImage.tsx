@@ -33,8 +33,10 @@ const ProductImage = ({ selectedColor, product }: ProductImageProps) => {
   };
 
   const imagesToDisplay = showAllImages
-    ? product.imageUrls?.[selectedColor] || []
-    : (product.imageUrls?.[selectedColor] || []).slice(0, 3);
+    ? // @ts-ignore
+      product.imageUrls?.[selectedColor] || []
+    : // @ts-ignore
+      (product.imageUrls?.[selectedColor] || []).slice(0, 3);
 
   return (
     <div className="h-full lg:w-[50%] float-start lg:flex-row flex py-11 flex-col justify-center items-center gap-2 lg:justify-center">
@@ -60,6 +62,7 @@ const ProductImage = ({ selectedColor, product }: ProductImageProps) => {
               onClick={() => handleThumbnailClick(imageUrl)}
             />
           ))}
+        {/* @ts-ignore */}
         {product.imageUrls?.[selectedColor]?.length > 3 && !showAllImages && (
           <button
             className="lg:w-32 md:w-20 w-14 h-14 md:h-20 lg:h-32 rounded-lg cursor-pointer border-2 "

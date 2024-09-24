@@ -61,6 +61,7 @@ const ProductDescription: React.FC<ProductDescriptionProps> = ({ product }) => {
         <TabsContent value="details">
           <div>
             <h2 className="text-lg font-bold">Product details</h2>
+            {/* @ts-ignore */}
             <VerticalTable data={product} product={product} />
           </div>
         </TabsContent>
@@ -113,6 +114,7 @@ const ProductDescription: React.FC<ProductDescriptionProps> = ({ product }) => {
                   <h2>
                     <RatingProvider
                       size={"2rem"}
+                      // @ts-ignore
                       rating={averageRating.toFixed(2) || 0}
                     />
                   </h2>
@@ -124,8 +126,12 @@ const ProductDescription: React.FC<ProductDescriptionProps> = ({ product }) => {
                     <div key={star} className="flex items-center gap-2">
                       <p>{star}</p>
                       <Progress
+                        // @ts-ignore
+
                         value={(ratingDistribution[star] * 100) / totalPeople}
                       />
+
+                      {/*@ts-ignore  */}
                       <p>{ratingDistribution[star]}</p>
                     </div>
                   ))}

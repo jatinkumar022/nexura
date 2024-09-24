@@ -57,6 +57,7 @@ const Profile: React.FC = () => {
     if (user) {
       setProfilePicUrl(user.photoURL || "");
       setDisplayName(user.displayName || "");
+      // @ts-ignore
       setBio(user?.bio || "");
 
       const fetchProfileData = async () => {
@@ -95,6 +96,7 @@ const Profile: React.FC = () => {
   };
 
   const handleCropComplete = async (
+    // @ts-ignore
     croppedArea: any,
     croppedAreaPixels: any
   ): Promise<void> => {

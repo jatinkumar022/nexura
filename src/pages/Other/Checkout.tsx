@@ -133,7 +133,7 @@ const Checkout = () => {
     }
   };
 
-  const handleExpiryInput = (e) => {
+  const handleExpiryInput = (e: any) => {
     let input = e.target.value.replace(/\D/g, ""); // Remove non-numeric characters
 
     // Automatically add slash after the first 2 digits
@@ -150,7 +150,7 @@ const Checkout = () => {
     }
   };
 
-  const handleCardNumberInput = (e) => {
+  const handleCardNumberInput = (e: any) => {
     let input = e.target.value.replace(/\D/g, ""); // Remove non-numeric characters
 
     // Automatically add dash after every 4 digits
@@ -174,7 +174,7 @@ const Checkout = () => {
     }
   };
 
-  const handleAddNewCard = async (e) => {
+  const handleAddNewCard = async (e: any) => {
     e.preventDefault(); // Prevent default form submission
     setNewCard({
       number: "",

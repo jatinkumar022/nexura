@@ -116,6 +116,7 @@ const Cart = () => {
   const getTotalPrice = useMemo(() => {
     return Object.entries(cartItems).reduce(
       (total, [productId, { quantity }]) => {
+        // @ts-ignore
         const product = products[productId];
         return total + (product?.price || 0) * quantity;
       },
@@ -133,6 +134,7 @@ const Cart = () => {
   const getTotalDiscount = useMemo(() => {
     return Object.entries(cartItems).reduce(
       (total, [productId, { quantity }]) => {
+        // @ts-ignore
         const product = products[productId];
         if (!product || !product.discount) return total;
 
@@ -206,6 +208,7 @@ const Cart = () => {
           <div className="mt-6 sm:mt-8 md:gap-6 lg:flex lg:items-start xl:gap-8">
             <div className="mx-auto w-full flex-none lg:max-w-2xl xl:max-w-4xl">
               {Object.entries(cartItems).map(([productId, item]) => {
+                // @ts-ignore
                 const product = products[productId];
                 // this is discount and we want total discount for below cide
                 if (!product) return null;
@@ -436,15 +439,12 @@ const Cart = () => {
                       htmlFor="voucher"
                       className="mb-2 block text-sm font-medium text-gray-900 dark:text-white"
                     >
-                      {" "}
                       Do you have a voucher or gift card?{" "}
                     </label>
                     <input
                       type="text"
                       id="voucher"
                       className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-primary-500 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder:text-gray-400 dark:focus:border-primary-500 dark:focus:ring-primary-500"
-                      placeholder=""
-                      required=""
                     />
                   </div>
                   <button

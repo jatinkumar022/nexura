@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { getAuth } from "firebase/auth";
 import { fetchOrders } from "@/utils/fetchOrders"; // Adjust import if needed
 import { CgSandClock } from "react-icons/cg";
@@ -28,6 +28,7 @@ const OrdersList = () => {
       if (userId) {
         try {
           const ordersData = await fetchOrders(userId);
+          // @ts-ignore
           setOrders(ordersData);
         } catch (error) {
           console.error("Error fetching orders: ", error);

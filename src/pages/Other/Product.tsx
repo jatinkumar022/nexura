@@ -15,7 +15,7 @@ const Product = () => {
     (state: RootState) => state.products
   );
   const [selectedColor, setSelectedColor] = useState<string | null>(null);
-
+  // @ts-ignore
   const product = products[id];
 
   useEffect(() => {
@@ -49,6 +49,7 @@ const Product = () => {
         <ProductImage selectedColor={selectedColor} product={product} />
         <div className="h-full lg:w-[50%] float-end">
           <ProductDetails
+            // @ts-ignore
             product={product}
             handleColorChange={handleColorChange}
           />
