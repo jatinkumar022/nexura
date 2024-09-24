@@ -13,6 +13,9 @@ import Users from "./pages/Users/Users";
 import AddProduct from "./pages/Manage Products/AddProduct";
 import AllProducts from "./pages/Manage Products/AllProducts";
 import EditProduct from "./pages/Manage Products/EditProduct";
+import { AuthProvider } from "./context/authContext";
+import PrivateRoute from "./PrivateRoutes";
+
 function AdminRoutes() {
   const [loading, setLoading] = useState(true);
 
@@ -30,74 +33,88 @@ function AdminRoutes() {
   }
 
   return (
-    <DefaultLayout>
-      <Routes>
-        <Route
-          index
-          element={
-            <>
-              <PageTitle title="eCommerce Dashboard | Admin" />
-              <ECommerce />
-            </>
-          }
-        />
-        <Route
-          path="/order"
-          element={
-            <>
-              <PageTitle title="Profile | Admin" />
-              <Orders />
-            </>
-          }
-        />
-        <Route
-          path="/users"
-          element={
-            <>
-              <PageTitle title="Profile | Admin" />
-              <Users />
-            </>
-          }
-        />
-        <Route
-          path="/add-product"
-          element={
-            <>
-              <PageTitle title="Profile | Admin" />
-              <AddProduct />
-            </>
-          }
-        />
-        <Route
-          path="/all-products"
-          element={
-            <>
-              <PageTitle title="Profile | Admin" />
-              <AllProducts />
-            </>
-          }
-        />
-        <Route
-          path="/edit-product/:productId"
-          element={
-            <>
-              <PageTitle title="Profile | Admin" />
-              <EditProduct />
-            </>
-          }
-        />
+    <AuthProvider>
+      <DefaultLayout>
+        <Routes>
+          <Route
+            index
+            element={
+              <PrivateRoute>
+                <>
+                  <PageTitle title="eCommerce Dashboard | Admin" />
+                  <ECommerce />
+                </>
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/order"
+            element={
+              <PrivateRoute>
+                <>
+                  <PageTitle title="Profile | Admin" />
+                  <Orders />
+                </>
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/users"
+            element={
+              <PrivateRoute>
+                <>
+                  <PageTitle title="Profile | Admin" />
+                  <Users />
+                </>
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/add-product"
+            element={
+              <PrivateRoute>
+                <>
+                  <PageTitle title="Profile | Admin" />
+                  <AddProduct />
+                </>
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/all-products"
+            element={
+              <PrivateRoute>
+                <>
+                  <PageTitle title="Profile | Admin" />
+                  <AllProducts />
+                </>
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/edit-product/:productId"
+            element={
+              <PrivateRoute>
+                <>
+                  <PageTitle title="Profile | Admin" />
+                  <EditProduct />
+                </>
+              </PrivateRoute>
+            }
+          />
 
-        <Route
-          path="auth/signin"
-          element={
-            <>
-              <PageTitle title="Signin | Admin" />
-              <SignIn />
-            </>
-          }
-        />
-      </Routes>
-    </DefaultLayout>
+          <Route
+            path="auth/signin"
+            element={
+              <>
+                <PageTitle title="Signin | Admin" />
+                <SignIn />
+              </>
+            }
+          />
+        </Routes>
+      </DefaultLayout>
+    </AuthProvider>
   );
 }
 
