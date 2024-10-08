@@ -128,20 +128,20 @@ const Navbar = () => {
   if (productNames.length === 0) return <></>;
 
   return (
-    <nav className="px-5 pt-5 fixed top-0 w-screen z-50 bg-white shadow-md">
+    <nav className="px-5 pb-5 sm:pb-0 pt-5 fixed top-0 w-screen z-50 bg-white shadow-md">
       {/* UpperNav */}
       <div className="flex sm:justify-between gap-3 items-center px-3">
         <Link to={"/"} className="kanit-bold text-xl cursor-pointer">
           BR.<span className="text-cs_gray">F</span>
         </Link>
         <div className="relative w-[22rem]" ref={searchRef}>
-          <div className="bg-cs_white px-4 py-2 flex items-center gap-3 rounded-xl w-full shadow-sm">
+          <div className="bg-cs_white px-4 py-2 flex items-center font-light gap-3 rounded-xl w-full shadow-sm">
             <RiSearchLine size={"20px"} color="#a4a4a4" />
             <input
               value={input}
               onChange={(e) => handleChange(e.target.value)}
               placeholder="Type to search.."
-              className="w-full text-sm bg-transparent focus:outline-none"
+              className="w-full text-sm bg-transparent  focus:outline-none"
             />
           </div>
 
@@ -240,6 +240,24 @@ const Navbar = () => {
       {isMenuOpen && (
         <div className="absolute top-full left-0 right-0 bg-white border border-gray-200 shadow-lg z-50">
           <ul className="flex flex-col">
+            <Link
+              to={"/cart"}
+              className="hidden sm:flex relative flex-col gap-1 items-center cursor-pointer"
+            >
+              <HiOutlineShoppingBag size={"20px"} />
+              <div className="bg-cs_yellow absolute left-3 bottom-6 text-sm text-center rounded-full px-1.5 w-auto h-5">
+                {totalCartItems}
+              </div>
+              <h2 className="text-[9px]">Cart</h2>
+            </Link>
+            <Link
+              to={"/favorites"}
+              className="hidden sm:flex flex-col gap-1 items-center cursor-pointer"
+            >
+              <IoMdHeartEmpty size={"20px"} />
+              <h2 className="text-[9px] ">Favorites</h2>
+            </Link>
+
             {menuList.map((menu, index) => (
               <li key={index} className="border-b border-gray-200">
                 <NavLink
