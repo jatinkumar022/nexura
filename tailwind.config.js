@@ -31,6 +31,7 @@ module.exports = {
         // You can add more line clamps here if needed
       },
       colors: {
+        cs_green: "#95CF01",
         cs_black: "#010101",
         cs_white: "#f2f0ea",
         cs_yellow: "#edcf5d",

@@ -10,7 +10,7 @@ const HomeFeatured = () => {
             Collection <br />
             For You
           </h1>
-          <hr className="bg-green-400 h-[3px] mx-auto my-4  rounded  " />
+          <hr className="bg-cs_green  h-[3px] mx-auto my-4  rounded  " />
           <p className="mb-4 max-w-2xl text-gray-500  md:mb-12 md:text-lg  lg:mb-5 lg:text-xl">
             We craft the, we wont say the best,
             <br />
@@ -20,7 +20,7 @@ const HomeFeatured = () => {
             href="#product_list"
             className="inline-block rounded-lg bg-gray-900 px-6 py-3.5 text-center font-medium text-white hover:bg-black focus:outline-none focus:ring-4 focus:ring-zink-800 -600  "
           >
-            Shop Now
+            Shop Now!
           </a>
         </div>
         <div className="hidden md:col-span-5  md:mt-0 md:flex ">
