@@ -9,7 +9,7 @@ import { FaHeart, FaRegHeart } from "react-icons/fa";
 import { handleToggleFavorite } from "@/utils/favorites";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { fetchUserFavorites } from "@/utils/fetchUserFavorites";
-import Loader from "@/Admin/common/Loader";
+import ReactLoading from "react-loading";
 
 // Define types for the product and props
 interface Product {
@@ -109,11 +109,11 @@ const ProductList: React.FC<ProductListProps> = ({ selectedCategory }) => {
     }
   };
 
+  // if (true)
   if (productsStatus === "loading")
     return (
-      <div>
-        {" "}
-        <Loader />
+      <div className="w-screen flex items-center justify-center h-screen -mt-24">
+        <ReactLoading type={"bars"} height={30} width={30} color="black" />
       </div>
     );
   if (productsStatus === "failed") return <div>Error fetching products</div>;

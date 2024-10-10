@@ -6,7 +6,7 @@ import ProductDescription from "@/components/custom/Product/ProductDescription";
 import ProductDetails from "@/components/custom/Product/ProductDetails";
 import ProductImage from "@/components/custom/Product/ProductImage";
 import { useEffect, useState } from "react";
-import Loader from "@/Admin/common/Loader";
+import ReactLoading from "react-loading";
 
 const Product = () => {
   const { id } = useParams<{ id: string }>();
@@ -32,10 +32,9 @@ const Product = () => {
 
   if (status === "loading")
     return (
-      <p>
-        {" "}
-        <Loader />
-      </p>
+      <div className="w-screen flex items-center justify-center h-screen -mt-24">
+        <ReactLoading type={"bars"} height={30} width={30} color="black" />
+      </div>
     );
   if (!product) return <p>Product not found</p>;
 

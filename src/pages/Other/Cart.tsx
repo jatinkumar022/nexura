@@ -17,7 +17,8 @@ import {
 import { RootState, AppDispatch } from "@/redux/store/store";
 import { Link, useNavigate } from "react-router-dom";
 import Images from "@/assets";
-import Loader from "@/Admin/common/Loader";
+import ReactLoading from "react-loading";
+
 const Cart = () => {
   const [loading, setLoading] = useState(true);
   const auth = getAuth();
@@ -180,10 +181,9 @@ const Cart = () => {
   };
   if (loading)
     return (
-      <p>
-        {" "}
-        <Loader />
-      </p>
+      <div className="w-screen  h-screen flex items-center justify-center  ">
+        <ReactLoading type={"bars"} height={30} width={30} color="black" />
+      </div>
     );
   return (
     <section className="bg-white py-8 antialiased dark:bg-gray-900 md:py-16">
@@ -194,7 +194,6 @@ const Cart = () => {
 
         {Object.keys(cartItems).length === 0 ? (
           <>
-            {" "}
             <div className="text-center">
               <img
                 src={Images.cart}

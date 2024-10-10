@@ -14,7 +14,8 @@ import { handleToggleFavorite } from "@/utils/favorites";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { fetchUserFavorites } from "@/utils/fetchUserFavorites";
 import { handleAddToCart } from "@/utils/handleToggleCart";
-import Loader from "@/Admin/common/Loader";
+import ReactLoading from "react-loading";
+
 interface Product {
   id: string;
   name?: string;
@@ -129,8 +130,12 @@ const ProductDetails = ({
     }
   };
 
-  if (!product) return <Loader />;
-  // Handle case where product is not available
+  if (!product)
+    return (
+      <div className="w-screen flex items-center justify-center h-screen -mt-24">
+        <ReactLoading type={"bars"} height={30} width={30} color="black" />
+      </div>
+    ); // Handle case where product is not available
 
   return (
     <div className="md:px-5 py-11 md:ml-10">

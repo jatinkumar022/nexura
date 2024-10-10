@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import "./css/satoshi.css";
-import Loader from "./common/Loader";
 import PageTitle from "./components/PageTitle";
 import SignIn from "./pages/Authentication/SignIn";
 import ECommerce from "./pages/Dashboard/ECommerce";
@@ -15,7 +14,7 @@ import AllProducts from "./pages/Manage Products/AllProducts";
 import EditProduct from "./pages/Manage Products/EditProduct";
 import { AuthProvider } from "./context/authContext";
 import PrivateRoute from "./PrivateRoutes";
-
+import ReactLoading from "react-loading";
 function AdminRoutes() {
   const [loading, setLoading] = useState(true);
 
@@ -27,9 +26,12 @@ function AdminRoutes() {
     const timer = setTimeout(() => setLoading(false), 1000);
     return () => clearTimeout(timer);
   }, []);
-
   if (loading) {
-    return <Loader />;
+    return (
+      <div className="w-screen flex items-center justify-center h-screen ">
+        <ReactLoading type={"bars"} height={30} width={30} color="black" />
+      </div>
+    );
   }
 
   return (

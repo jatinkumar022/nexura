@@ -6,7 +6,7 @@ import { FiTruck } from "react-icons/fi";
 import { IoCheckmarkSharp } from "react-icons/io5";
 import { RxCross2 } from "react-icons/rx";
 import { cancelOrder, removeOrder } from "@/utils/createOrderInFirebase";
-import Loader from "@/Admin/common/Loader";
+import ReactLoading from "react-loading";
 
 interface Order {
   orderId: string;
@@ -72,7 +72,7 @@ const OrdersList = () => {
     <div className="container mx-auto px-4 py-8">
       {loading ? (
         <div className="text-center text-lg font-semibold text-gray-600">
-          <Loader />
+          <ReactLoading type={"bars"} height={30} width={30} color="black" />
         </div>
       ) : orders.length === 0 ? (
         <div className="text-center text-lg font-semibold text-gray-600">

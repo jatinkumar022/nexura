@@ -3,10 +3,10 @@ import {
   fetchAllOrders,
   cancelOrder,
   updateOrderStatus,
+  deleteOrder,
 } from "../../utils/OrderUtils";
 import TableThree from "@/Admin/components/Tables/TableThree";
-import Loader from "@/Admin/common/Loader";
-
+import ReactLoading from "react-loading";
 const Orders = () => {
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -60,7 +60,7 @@ const Orders = () => {
       {loading ? (
         <div className="flex justify-center items-center">
           <div className="text-center text-lg font-semibold text-gray-600">
-            <Loader />
+            <ReactLoading type={"bars"} height={30} width={30} color="black" />
           </div>
           {/* You could add a spinner here */}
         </div>

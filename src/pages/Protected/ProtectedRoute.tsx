@@ -2,7 +2,7 @@ import React from "react";
 import { Navigate } from "react-router-dom";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "@/Database/firebase";
-import Loader from "@/Admin/common/Loader";
+import ReactLoading from "react-loading";
 
 interface ProtectedRouteProps {
   element: React.ReactElement;
@@ -17,9 +17,8 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({
 
   if (loading)
     return (
-      <div>
-        {" "}
-        <Loader />
+      <div className="w-screen flex items-center justify-center h-screen -mt-24">
+        <ReactLoading type={"bars"} height={30} width={30} color="black" />
       </div>
     );
 
