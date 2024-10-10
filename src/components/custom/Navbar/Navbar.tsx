@@ -161,6 +161,10 @@ const Navbar = () => {
                     <Link
                       to={`/product/${product.id}`}
                       className="block px-4 text-sm text-gray-700 flex-1  "
+                      onClick={() => {
+                        setData([]);
+                        setInput("");
+                      }}
                     >
                       {product.name}
                     </Link>
