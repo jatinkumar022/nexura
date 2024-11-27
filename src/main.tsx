@@ -6,7 +6,7 @@ import { BrowserRouter } from "react-router-dom";
 import { Toaster } from "@/components/ui/toaster";
 import { Provider } from "react-redux";
 import store from "./redux/store/store.ts";
-
+import ScrollToTop from "./utils/ScrollToTop.ts";
 const rootElement = document.getElementById("root");
 
 if (rootElement) {
@@ -16,6 +16,7 @@ if (rootElement) {
     <React.StrictMode>
       <Provider store={store}>
         <BrowserRouter>
+          <ScrollToTop />
           <App />
           <Toaster />
         </BrowserRouter>
