@@ -10,6 +10,7 @@ import { FaHeart, FaRegHeart } from "react-icons/fa";
 import RatingProvider from "@/components/ui/Rating"; // Ensure this path is correct
 import calculateAverageRating from "@/utils/calculateAvarageRating"; // Ensure this path is correct
 import ReactLoading from "react-loading";
+import Images from "@/assets";
 
 const Favorites: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();
@@ -92,7 +93,17 @@ const Favorites: React.FC = () => {
       </div>
     );
   if (productsStatus === "failed") return <div>Error fetching products</div>;
-  if (filteredProducts.length === 0) return <div>No favorites available.</div>;
+  if (filteredProducts.length === 0)
+    return (
+      <div className="text-center py-16">
+        <img
+          src={Images.nofav}
+          alt="Empty Cart"
+          className="mx-auto w-1/12 h-auto "
+        />
+        <p className="mt-4 text-lg">No Favorites added</p>
+      </div>
+    );
 
   return (
     <section
